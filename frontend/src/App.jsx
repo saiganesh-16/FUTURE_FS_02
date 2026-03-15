@@ -11,7 +11,7 @@ function App() {
   const fetchLeads = async () => {
     try {
       // ⚠️ DOUBLE CHECK that this is your EXACT Render URL!
-      const response = await axios.get('https://future-fs-02-48c9.onrender.com/api/leads');
+      const response = await axios.get('http://localhost:5000/api/leads');
       
       // Safety check: Only update 'leads' if the backend sent a real array
       if (Array.isArray(response.data)) {
@@ -30,7 +30,7 @@ function App() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.post('https://future-fs-02-48c9.onrender.com/api/leads', formData);
+      await axios.post('http://localhost:5000/api/leads', formData);
       setFormData({ name: '', email: '', notes: '' });
       fetchLeads();
     } catch (err) { console.error("Error adding lead", err); }
@@ -39,7 +39,7 @@ function App() {
   // 3. Update status
   const updateStatus = async (id, newStatus) => {
     try {
-      await axios.put(`https://YOUR-RENDER-URL.onrender.com/api/leads/${id}`, { status: newStatus });
+      await axios.put(`http://localhost:5000/api/leads/${id}`, { status: newStatus });
       fetchLeads();
     } catch (err) { console.error("Error updating status", err); }
   };
@@ -48,7 +48,7 @@ function App() {
   const deleteLead = async (id) => {
     if (window.confirm("Delete this lead permanently?")) {
       try {
-        await axios.delete(`https://YOUR-RENDER-URL.onrender.com/api/leads/${id}`);
+        await axios.delete(`http://localhost:5000/api/leads/${id}`);
         fetchLeads();
       } catch (err) { console.error("Error deleting lead", err); }
     }
