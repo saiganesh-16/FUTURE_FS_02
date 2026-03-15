@@ -101,4 +101,5 @@ input:focus, select:focus { border-color: var(--primary); }
 .Converted { background: #dcfce7; color: #166534; }
 
 /* Dark mode overrides for badges so they don't look overly bright */
-.dark-mode .New { background: rgba(30, 64, 17
+.dark-mode .New { background: rgba(30, 64, 17);
+  
